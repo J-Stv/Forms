@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Tablet-friendly -->
+  <title>Company Stock/Sales Entry</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    form { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 90%; max-width: 600px; }
+    input, select, button { width: 100%; padding: 15px; margin: 10px 0; font-size: 18px; border: 1px solid #ccc; border-radius: 10px; }
+    button { background: #ff4500; color: white; border: none; cursor: pointer; font-weight: bold; }
+    h1 { text-align: center; color: #333; }
+    /* Add your spicy custom CSS: logos, colors, grids, whatever */
+  </style>
+</head>
+<body>
+  <form action="https://docs.google.com/forms/d/e/YOUR_LONG_FORM_ID/formResponse" method="POST" target="_self">
+    <h1>Stock In/Out or Sale</h1>
+    
+    <!-- Map to your form fields – replace entry.XXXX with yours -->
+    <input type="text" name="entry.123456789" placeholder="Item Name" required>
+    <input type="number" name="entry.987654321" placeholder="Quantity" required>
+    <select name="entry.555555555">
+      <option value="">Type</option>
+      <option value="Sale">Sale</option>
+      <option value="Stock In">Stock In</option>
+      <option value="Stock Out">Stock Out</option>
+    </select>
+    <!-- Add more fields: prices, notes, dropdowns for products -->
+    
+    <button type="submit">Submit Entry</button>
+  </form>
+</body>
+</html>
