@@ -1,34 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Tablet-friendly -->
-  <title>Company Stock/Sales Entry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registo de Movimento - Bilhar</title>
   <style>
-    body { font-family: Arial; background: #f0f0f0; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-    form { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 90%; max-width: 600px; }
-    input, select, button { width: 100%; padding: 15px; margin: 10px 0; font-size: 18px; border: 1px solid #ccc; border-radius: 10px; }
-    button { background: #ff4500; color: white; border: none; cursor: pointer; font-weight: bold; }
-    h1 { text-align: center; color: #333; }
-    /* Add your spicy custom CSS: logos, colors, grids, whatever */
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #f0f0f0; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      margin: 0; 
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    form { 
+      background: white; 
+      padding: 40px; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+      width: 100%; 
+      max-width: 600px; 
+    }
+    h1 { text-align: center; color: #333; margin-bottom: 30px; }
+    label { display: block; margin: 15px 0 5px; font-weight: bold; color: #555; }
+    select, input[type="text"], input[type="radio"] { 
+      width: 100%; 
+      padding: 15px; 
+      font-size: 18px; 
+      border: 1px solid #ccc; 
+      border-radius: 10px; 
+      box-sizing: border-box;
+    }
+    .radio-group { margin: 20px 0; }
+    .radio-option { margin: 10px 0; font-size: 18px; }
+    button { 
+      width: 100%; 
+      padding: 18px; 
+      margin-top: 30px; 
+      background: #ff4500; 
+      color: white; 
+      border: none; 
+      border-radius: 10px; 
+      font-size: 20px; 
+      font-weight: bold; 
+      cursor: pointer;
+    }
+    button:hover { background: #e03d00; }
   </style>
 </head>
 <body>
-  <form action="https://docs.google.com/forms/d/e/YOUR_LONG_FORM_ID/formResponse" method="POST" target="_self">
-    <h1>Stock In/Out or Sale</h1>
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLScUXB_eoIicMD9mGb47UY2alkHqxzl1m_hiWOOV8OFybJu8Ig/formResponse" method="POST" target="_self">
+    <h1>Registo de Movimento</h1>
     
-    <!-- Map to your form fields – replace entry.XXXX with yours -->
-    <input type="text" name="entry.123456789" placeholder="Item Name" required>
-    <input type="number" name="entry.987654321" placeholder="Quantity" required>
-    <select name="entry.555555555">
-      <option value="">Type</option>
-      <option value="Sale">Sale</option>
-      <option value="Stock In">Stock In</option>
-      <option value="Stock Out">Stock Out</option>
+    <!-- Identifique-se * (Dropdown) -->
+    <label for="ident">Identifique-se *</label>
+    <select name="entry.531171638" id="ident" required>
+      <option value="">Escolher</option>
+      <option value="Lucas">Lucas</option>
+      <option value="Patrick">Patrick</option>
+      <option value="Vladimir">Vladimir</option>
+      <option value="Jurandir">Jurandir</option>
+      <option value="Luiz">Luiz</option>
+      <option value="Arisson">Arisson</option>
+      <option value="Jhonny">Jhonny</option>
     </select>
-    <!-- Add more fields: prices, notes, dropdowns for products -->
     
-    <button type="submit">Submit Entry</button>
+    <!-- Tipo de Movimento * (Radios) -->
+    <label>Tipo de Movimento *</label>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="entry.2126669598" value="Saída" id="saida" required>
+        <label for="saida">Saída</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="entry.2126669598" value="Entrada" id="entrada">
+        <label for="entrada">Entrada</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="entry.2126669598" value="Venda" id="venda">
+        <label for="venda">Venda</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="entry.2126669598" value="" id="outro">
+        <label for="outro">Outro:</label>
+        <input type="text" name="entry.2126669598" placeholder="Especifique..." style="margin-top:10px;">
+      </div>
+    </div>
+    
+    <button type="submit">Submeter Registo</button>
   </form>
+
+  <!-- Custom success overlay - no redirect BS -->
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      setTimeout(function() {
+        document.body.innerHTML = '<h1 style="text-align:center;color:green;margin-top:50vh;">Registo Submetido com Sucesso!<br><br>Pronto para o próximo.</h1>';
+      }, 1000); // Delay for Google to process
+    });
+  </script>
 </body>
 </html>
