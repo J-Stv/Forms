@@ -12,7 +12,7 @@
     select, input[type="text"] { width: 100%; padding: 50px; font-size: 55px; border: 8px solid white; border-radius: 30px; background: #333; color: white; }
     .radio-group { margin: 80px 0; }
     .radio-option { margin: 60px 0; }
-    .radio-option input[type="radio"] { width: 80px; height: 80px; margin-right: 40px; }
+    .radio-option input[type="radio"] { width: 80px; height: 80px; margin-right: 40px; vertical-align: middle; }
     .radio-option label { font-size: 70px; display: inline; vertical-align: middle; }
     button { width: 100%; padding: 80px; font-size: 90px; background: lime; color: black; border: none; border-radius: 40px; margin-top: 100px; font-weight: bold; }
   </style>
@@ -38,48 +38,30 @@
       <div class="radio-option"><input type="radio" name="entry.2126669598" value="Saída" required><label>SAÍDA</label></div>
       <div class="radio-option"><input type="radio" name="entry.2126669598" value="Entrada"><label>ENTRADA</label></div>
       <div class="radio-option"><input type="radio" name="entry.2126669598" value="Venda"><label>VENDA</label></div>
-      <div class="radio-option"><input type="radio" name="entry.2126669598" value=""><label>OUTRO:</label><br><input type="text" name="entry.2126669598" placeholder="ESCREVA"></div>
+      <div class="radio-option"><input type="radio" name="entry.2126669598" value=""><label>OUTRO:</label><br><input type="text" name="entry.2126669598" placeholder="ESCREVA AQUI"></div>
     </div>
-    
-    <label>ITEM</label>
-    <select name="entry.2029564608">
-      <option value="">ESCOLHA O ITEM</option>
-      <option value="Bolão">BOLÃO</option>
-      <option value="Taco">TACO</option>
-      <!-- Adicione a lista completa aqui, em maiúsculas para simplicidade -->
-      <option value="Bolão Usado">BOLÃO USADO</option>
-      <option value="Caixa de Grampos">CAIXA DE GRAMPOS</option>
-      <!-- ... continue com todos os itens da sua lista original -->
-    </select>
-    
-    <label>QUANTIDADE</label>
-    <div class="radio-group">
-      <div class="radio-option"><input type="radio" name="entry.1461460228" value="1"><label>1</label></div>
-      <div class="radio-option"><input type="radio" name="entry.1461460228" value="2"><label>2</label></div>
-      <div class="radio-option"><input type="radio" name="entry.1461460228" value="3"><label>3</label></div>
-      <div class="radio-option"><input type="radio" name="entry.1461460228" value="4"><label>4</label></div>
-      <div class="radio-option"><input type="radio" name="entry.1461460228" value="5"><label>5</label></div>
-      <div class="radio-option"><input type="radio" name="entry.1461460228" value="6"><label>6</label></div>
-      <div class="radio-option"><input type="radio" name="entry.1461460228" value=""><label>OUTRO:</label><br><input type="text" name="entry.1461460228" placeholder="NÚMERO"></div>
-    </div>
-    
-    <label>OBSERVAÇÃO</label>
-    <input type="text" name="entry.2074203052" placeholder="ESCREVA SE PRECISAR">
     
     <button type="submit">ENVIAR JÁ!</button>
   </form>
 
   <script>
     document.getElementById('registoForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Para o redirect
+      e.preventDefault();  // Stops the fucking redirect
       const formData = new FormData(this);
+      
+      // Add empty values for required later fields to "skip" pages
+      formData.append('entry.2029564608', '');  // Item (first one)
+      formData.append('entry.1461460228', '');  // Quantity
+      formData.append('entry.2074203052', '');  // Observation
+      
       fetch('https://docs.google.com/forms/d/e/1FAIpQLScUXB_eoIicMD9mGb47UY2alkHqxzl1m_hiWOOV8OFybJu8Ig/formResponse', {
         method: 'POST',
+        mode: 'no-cors',  // Needed for Google Forms cross-origin
         body: formData
       }).then(() => {
         document.body.innerHTML = '<h1 style="font-size:100px;color:lime;margin-top:40vh;">FEITO!<br><br>PRONTO PARA OUTRO</h1>';
       }).catch(() => {
-        alert('Erro! Tente novamente.');
+        document.body.innerHTML = '<h1 style="font-size:80px;color:red;margin-top:40vh;">ERRO!<br>TENTE NOVAMENTE</h1>';
       });
     });
   </script>
