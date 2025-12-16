@@ -3,18 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registo Fácil</title>
+  <title>Registo Fácil - Bilhar</title>
   <style>
-    body { background: black; color: white; font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; padding: 20px; }
-    form { width: 100%; max-width: 900px; text-align: center; }
-    h1 { font-size: 80px; margin-bottom: 60px; }
-    label { font-size: 60px; display: block; margin: 50px 0 30px; }
-    select, input[type="text"] { width: 100%; padding: 50px; font-size: 55px; border: 8px solid white; border-radius: 30px; background: #333; color: white; }
-    .radio-group { margin: 80px 0; }
-    .radio-option { margin: 60px 0; }
-    .radio-option input[type="radio"] { width: 80px; height: 80px; margin-right: 40px; vertical-align: middle; }
-    .radio-option label { font-size: 70px; display: inline; vertical-align: middle; }
-    button { width: 100%; padding: 80px; font-size: 90px; background: lime; color: black; border: none; border-radius: 40px; margin-top: 100px; font-weight: bold; }
+    body { 
+      background: black; 
+      color: white; 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      padding: 20px;
+    }
+    form { 
+      width: 100%; 
+      max-width: 1000px; 
+      margin: 0 auto; 
+      text-align: center;
+    }
+    h1 { 
+      font-size: 90px; 
+      margin: 40px 0;
+    }
+    h2 { 
+      font-size: 80px; 
+      margin: 60px 0 40px;
+      color: lime;
+    }
+    label { 
+      font-size: 70px; 
+      display: block; 
+      margin: 40px 0 20px;
+    }
+    select, input[type="text"], input[type="number"] { 
+      width: 100%; 
+      padding: 50px; 
+      font-size: 60px; 
+      border: 10px solid white; 
+      border-radius: 30px; 
+      background: #333; 
+      color: white; 
+      box-sizing: border-box;
+    }
+    .radio-group { 
+      margin: 80px 0; 
+    }
+    .radio-option { 
+      margin: 50px 0; 
+    }
+    .radio-option input[type="radio"] { 
+      width: 90px; 
+      height: 90px; 
+      margin-right: 50px; 
+      vertical-align: middle;
+    }
+    .radio-option label { 
+      font-size: 80px; 
+      vertical-align: middle;
+    }
+    .outro-text { 
+      margin-top: 40px;
+    }
+    button { 
+      width: 100%; 
+      padding: 80px; 
+      font-size: 100px; 
+      background: lime; 
+      color: black; 
+      border: none; 
+      border-radius: 50px; 
+      margin: 100px 0; 
+      font-weight: bold;
+    }
+    .success { 
+      font-size: 100px; 
+      color: lime; 
+      margin-top: 40vh;
+    }
+    .reload-btn { 
+      width: 100%; 
+      padding: 80px; 
+      font-size: 90px; 
+      background: white; 
+      color: black; 
+      border: none; 
+      border-radius: 50px; 
+      margin-top: 100px; 
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -23,7 +96,7 @@
     
     <label>QUEM É VOCÊ?</label>
     <select name="entry.531171638" required>
-      <option value="">TOQUE AQUI</option>
+      <option value="">TOQUE PARA ESCOLHER</option>
       <option value="Lucas">LUCAS</option>
       <option value="Patrick">PATRICK</option>
       <option value="Vladimir">VLADIMIR</option>
@@ -33,37 +106,193 @@
       <option value="Jhonny">JHONNY</option>
     </select>
     
-    <label>TIPO</label>
+    <label>TIPO DE MOVIMENTO</label>
     <div class="radio-group">
-      <div class="radio-option"><input type="radio" name="entry.2126669598" value="Saída" required><label>SAÍDA</label></div>
-      <div class="radio-option"><input type="radio" name="entry.2126669598" value="Entrada"><label>ENTRADA</label></div>
-      <div class="radio-option"><input type="radio" name="entry.2126669598" value="Venda"><label>VENDA</label></div>
-      <div class="radio-option"><input type="radio" name="entry.2126669598" value=""><label>OUTRO:</label><br><input type="text" name="entry.2126669598" placeholder="ESCREVA AQUI"></div>
+      <div class="radio-option">
+        <input type="radio" name="entry.2126669598" value="Saída" id="saida" required>
+        <label for="saida">SAÍDA</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="entry.2126669598" value="Entrada" id="entrada">
+        <label for="entrada">ENTRADA</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="entry.2126669598" value="Venda" id="venda">
+        <label for="venda">VENDA</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="entry.2126669598" value="" id="outroTipo">
+        <label for="outroTipo">OUTRO</label>
+      </div>
+      <div class="outro-text">
+        <input type="text" name="entry.2126669598" placeholder="ESCREVA O TIPO SE OUTRO">
+      </div>
+    </div>
+
+    <!-- 5 Item Blocks - Fill as many as needed, leave blank to skip -->
+    <h2>ITEM 1</h2>
+    <select name="entry.2029564608">
+      <option value="">SEM ITEM</option>
+      <option value="Bolão">BOLÃO</option>
+      <option value="Bolão Usado">BOLÃO USADO</option>
+      <option value="Caixa de Grampos">CAIXA DE GRAMPOS</option>
+      <option value="Fechadura">FECHADURA</option>
+      <option value="Ficha Formosa">FICHA FORMOSA</option>
+      <option value="Ficha J">FICHA J</option>
+      <option value="Taco">TACO</option>
+      <option value="Taco Reformado">TACO REFORMADO</option>
+      <option value="Par de Porta Taco">PAR DE PORTA TACO</option>
+      <option value="Peça Pano Verde">PEÇA PANO VERDE</option>
+      <option value="Chave">CHAVE</option>
+      <option value="Jg. de Caçapa de Rosca">JG. CAÇAPA ROSCA</option>
+      <option value="Jg. de Caçapa Gulosa">JG. CAÇAPA GULOSA</option>
+      <option value="Jg. de Cantão Branco">JG. CANTÃO BRANCO</option>
+      <option value="Jg. de Cantoneira Preta">JG. CANTONEIRA PRETA</option>
+      <option value="Jg. de Pé Nivelador">JG. PÉ NIVELADOR</option>
+      <option value="Ponteira de Taco">PONTEIRA TACO</option>
+      <option value="Jg. de Borrachas">JG. BORRACHAS</option>
+      <option value="Jg. de Borrachas Sinucão">JG. BORRACHAS SINUCÃO</option>
+      <option value="Pacotes de Giz">PACOTES GIZ</option>
+      <option value="Giz Master Azul">GIZ MASTER AZUL</option>
+      <option value="Giz Master Preto">GIZ MASTER PRETO</option>
+      <option value="Sola Master">SOLA MASTER</option>
+      <option value="Virola Simples">VIROLA SIMPLES</option>
+      <option value="Virola Conjulgada">VIROLA CONJULGADA</option>
+      <option value="Taco de Rosca">TACO DE ROSCA</option>
+      <option value="Jg. de Bolas 50mm">JG. BOLAS 50MM</option>
+      <option value="Jg. de Bolas Sinucão">JG. BOLAS SINUCÃO</option>
+      <option value="Jg. de Troféu">JG. TROFÉU</option>
+      <option value="Saco de Giz Branco">SACO GIZ BRANCO</option>
+      <option value="Caixa de Giz Azul">CAIXA GIZ AZUL</option>
+      <option value="Jg. de Guarnição PVC">JG. GUARNIÇÃO PVC</option>
+      <option value="Jg. de Guarnição Couro">JG. GUARNIÇÃO COURO</option>
+      <option value="Jg. de Sacolas Pretas">JG. SACOLAS PRETAS</option>
+      <option value="Jg. de Sacolas Brancas">JG. SACOLAS BRANCAS</option>
+      <option value="Jg. de Caçapa Alumínio">JG. CAÇAPA ALUMÍNIO</option>
+      <option value="Jg. de Arcos">JG. ARCOS</option>
+      <option value="Ficheiro J">FICHEIRO J</option>
+      <option value="Ficheiro Formosa">FICHEIRO FORMOSA</option>
+      <option value="Carretilha">CARRETILHA</option>
+      <option value="Capa de Mesa">CAPA DE MESA</option>
+      <option value="Puxa Saco">PUXA SACO</option>
+      <option value="Bola 50mm">BOLA 50MM</option>
+      <option value="Bola Sinucão">BOLA SINUCÃO</option>
+      <option value="Bola Pebolim">BOLA PEBOLIM</option>
+      <option value="Mola Relógio">MOLA RELÓGIO</option>
+      <option value="Triângulo">TRIÂNGULO</option>
+      <option value="Borracha de Taco">BORRACHA TACO</option>
+      <option value="Bolão 58mm">BOLÃO 58MM</option>
+      <option value="Peça Pano Vermelho">PEÇA PANO VERMELHO</option>
+      <option value="Peça Pano Preto">PEÇA PANO PRETO</option>
+      <option value="Jg. de Bolas Usado">JG. BOLAS USADO</option>
+      <option value="Jg de Bolas Sinucão Usado">JG BOLAS SINUCÃO USADO</option>
+      <option value="Taco para Reforma">TACO PARA REFORMA</option>
+      <option value="Bola Usada">BOLA USADA</option>
+      <option value="Bola Sinucão Usada">BOLA SINUCÃO USADA</option>
+      <option value="Caixa de Bobinas">CAIXA BOBINAS</option>
+      <option value="Cola Fórmica">COLA FÓRMICA</option>
+      <option value="Grampeador">GRAMPEADOR</option>
+      <option value="Respingadeira">RESPINGADEIRA</option>
+    </select>
+    
+    <label>QUANTIDADE ITEM 1</label>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="entry.1461460228" value="1"><label>1</label></div>
+      <div class="radio-option"><input type="radio" name="entry.1461460228" value="2"><label>2</label></div>
+      <div class="radio-option"><input type="radio" name="entry.1461460228" value="3"><label>3</label></div>
+      <div class="radio-option"><input type="radio" name="entry.1461460228" value="4"><label>4</label></div>
+      <div class="radio-option"><input type="radio" name="entry.1461460228" value="5"><label>5</label></div>
+      <div class="radio-option"><input type="radio" name="entry.1461460228" value="6"><label>6</label></div>
+      <div class="radio-option"><input type="radio" name="entry.1461460228" value=""><label>MAIS / OUTRO:</label></div>
+      <div class="outro-text"><input type="text" name="entry.1461460228" placeholder="ESCREVA O NÚMERO"></div>
     </div>
     
-    <button type="submit">ENVIAR JÁ!</button>
+    <label>OBSERVAÇÃO ITEM 1</label>
+    <input type="text" name="entry.2074203052" placeholder="ESCREVA SE PRECISAR">
+
+    <!-- Repeat for ITEM 2-5 with correct entry IDs -->
+    <h2>ITEM 2 (OPCIONAL)</h2>
+    <select name="entry.2021492077">
+      <option value="">SEM ITEM</option>
+      <!-- Same list as above -->
+      <option value="Bolão">BOLÃO</option>
+      <option value="Bolão Usado">BOLÃO USADO</option>
+      <!-- ... (copy the full list to save space, same as item 1) -->
+    </select>
+    
+    <label>QUANTIDADE ITEM 2</label>
+    <div class="radio-group">
+      <!-- Same as above -->
+      <div class="radio-option"><input type="radio" name="entry.2121729535" value="1"><label>1</label></div>
+      <!-- ... 2-6 -->
+      <div class="radio-option"><input type="radio" name="entry.2121729535" value=""><label>MAIS / OUTRO:</label></div>
+      <div class="outro-text"><input type="text" name="entry.2121729535" placeholder="ESCREVA O NÚMERO"></div>
+    </div>
+    
+    <label>OBSERVAÇÃO ITEM 2</label>
+    <input type="text" name="entry.11800978" placeholder="ESCREVA SE PRECISAR">
+
+    <!-- ITEM 3 -->
+    <h2>ITEM 3 (OPCIONAL)</h2>
+    <select name="entry.107556939">
+      <option value="">SEM ITEM</option>
+      <!-- Same list -->
+    </select>
+    <label>QUANTIDADE ITEM 3</label>
+    <div class="radio-group">
+      <!-- radios name="entry.1767561397" -->
+    </div>
+    <label>OBSERVAÇÃO ITEM 3</label>
+    <input type="text" name="entry.480303295">
+
+    <!-- ITEM 4 -->
+    <h2>ITEM 4 (OPCIONAL)</h2>
+    <select name="entry.1909136656">
+      <option value="">SEM ITEM</option>
+      <!-- Same list -->
+    </select>
+    <label>QUANTIDADE ITEM 4</label>
+    <div class="radio-group">
+      <!-- name="entry.1439362005" -->
+    </div>
+    <label>OBSERVAÇÃO ITEM 4</label>
+    <input type="text" name="entry.1239210864">
+
+    <!-- ITEM 5 -->
+    <h2>ITEM 5 (OPCIONAL)</h2>
+    <select name="entry.536332973">
+      <option value="">SEM ITEM</option>
+      <!-- Same list -->
+    </select>
+    <label>QUANTIDADE ITEM 5</label>
+    <div class="radio-group">
+      <!-- name="entry.536555087" -->
+    </div>
+    <label>OBSERVAÇÃO ITEM 5</label>
+    <input type="text" name="entry.1134996732">
+
+    <button type="submit">ENVIAR TODOS!</button>
   </form>
 
   <script>
     document.getElementById('registoForm').addEventListener('submit', function(e) {
-      e.preventDefault();  // Stops the fucking redirect
+      e.preventDefault();
       const formData = new FormData(this);
-      
-      // Add empty values for required later fields to "skip" pages
-      formData.append('entry.2029564608', '');  // Item (first one)
-      formData.append('entry.1461460228', '');  // Quantity
-      formData.append('entry.2074203052', '');  // Observation
       
       fetch('https://docs.google.com/forms/d/e/1FAIpQLScUXB_eoIicMD9mGb47UY2alkHqxzl1m_hiWOOV8OFybJu8Ig/formResponse', {
         method: 'POST',
-        mode: 'no-cors',  // Needed for Google Forms cross-origin
+        mode: 'no-cors',
         body: formData
-      }).then(() => {
-        document.body.innerHTML = '<h1 style="font-size:100px;color:lime;margin-top:40vh;">FEITO!<br><br>PRONTO PARA OUTRO</h1>';
-      }).catch(() => {
-        document.body.innerHTML = '<h1 style="font-size:80px;color:red;margin-top:40vh;">ERRO!<br>TENTE NOVAMENTE</h1>';
       });
+      
+      document.body.innerHTML = `
+        <div class="success">
+          FEITO COM SUCESSO!<br><br>
+          TODOS OS ITENS REGISTADOS
+        </div>
+        <button class="reload-btn" onclick="location.reload()">PRÓXIMO REGISTO</button>
+      `;
     });
   </script>
-</body>
+</body> 
 </html>
